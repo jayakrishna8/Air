@@ -3,18 +3,18 @@ class RoomsController < ApplicationController
   before_action :authenticate_user!, except: [:show]
 
   def index
-    @rooms = curent_user.rooms
+    @rooms = current_user.rooms
   end
 
   def show
   end
 
   def new
-    @room = curent_user.rooms.build
+    @room = current_user.rooms.build
   end
 
   def create
-    @room = curent_user.rooms.build(room_params)
+    @room = current_user.rooms.build(room_params)
     if @room.save
       redirect_to @room, notice: "Saved"
     else
